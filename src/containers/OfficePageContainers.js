@@ -9,13 +9,12 @@ import {
 const mapDispatchToProps = {
   removeOffice,
   getCompany,
+  getOffices
 };
 
 const mapStateToProps = (state) => ({
-  company: state.companies.filter(item => {
-    console.log('ll', item.id, state.filterCompany, item.id === state.filterCompany);
-    return item.id === state.filterCompany;
-  })
+  company: state.companies.filter(item => item.id === state.filterCompany),
+  offices: state.offices
 });
 
 const OfficePageContainers = connect(

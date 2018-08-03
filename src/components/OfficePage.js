@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import FormCompany from './FormCompany';
-import FormOffice from './FormOffice';
 import ListCard from './ListCard';
 
 const Wrapper = styled.div`
@@ -13,45 +11,68 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const LeftWrapper = styled.div`
-  flex: 50%;
-  padding: 0 10px;
-  border-right: 1px solid #e8e8e8;
-  margin: 20px 0;
-`;
-
-const RightWrapper = styled.div`
-  flex: 50%;
-  padding: 0 10px;
-  margin: 20px 0;
-`;
-
 const FullWrapper = styled.div`
   flex: 100%;
   border-top: 1px solid #e8e8e8;
   margin: 0 10px;
 `;
 
+const CompanyDetailWrapper = styled.div`
+	border-bottom: 1px solid #e8e8e8;
+
+	p {
+		font-size: 18px;
+		line-height: 20px;
+	}
+`;
+
+const CompanyTitle = styled.div`
+	font-size: 26px;
+	font-weight: 700;
+	border-bottom: 1px solid #e8e8e8;
+	margin-bottom: 10px;
+`;
+
+const CompanySection = styled.p`
+  font-weight: 700;
+	margin: 0;
+`;
+
 const DetailCompany = ({ company }) => {
+	const companyData = company[0] || {};
+	const { name, address, revenue, phoneNumber } = companyData;
+	const { code, number } = phoneNumber || {};
 
-
-	return null;
+	return (companyData
+		? <CompanyDetailWrapper>
+				<CompanyTitle>{name}</CompanyTitle>
+				<CompanySection>Addres :</CompanySection>
+				<p>{address}</p>
+				<CompanySection>Revenue :</CompanySection>
+				<p>{revenue}</p>
+				<CompanySection>Phone No :</CompanySection>
+				<p>{`(${code}) ${number}`}</p>
+			</CompanyDetailWrapper>
+		: null
+	);
 }
 
 class OfficePage extends Component {
 
-	componentDidMount() {
-		const { match, getCompany } = this.props;
-		getCompany(match.params.id);
+	componentWillMount() {
+		const { match, getCompany, getOffices } = this.props;
+		const idCompany = match.params.id
+		getCompany(idCompany);
+		getOffices(idCompany);
 	}
 
   render() {
-		const { addCompany, company } = this.props;
+		const { company, offices, removeOffice } = this.props;
     return (
       <Wrapper>
         <FullWrapper>
 					<DetailCompany company={company} />
-          {/* <ListCard companies={companies} removeCompany={removeCompany}/> */}
+          <ListCard offices={offices} removeOffice={removeOffice}/>
         </FullWrapper>
       </Wrapper>
     );
