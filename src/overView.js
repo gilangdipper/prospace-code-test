@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Button} from 'antd';
 import styled from 'styled-components';
+import FormCompany from './FormCompany';
+import FormOffice from './FormOffice';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
 const LeftWrapper = styled.div`
   flex: 50%;
+  padding-right: 10px;
 `;
 
 const RightWrapper = styled.div`
@@ -24,39 +25,20 @@ const FullWrapper = styled.div`
   flex: 100%;
 `;
 
-
 class overView extends Component {
+
   render() {
     return (
       <Wrapper>
         <LeftWrapper>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-          <Button type="primary">Button</Button> Ant Design Button with primary color defined in ant-theme-vars.less 
-          </p>
+          <FormCompany />
         </LeftWrapper>
         <RightWrapper>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-          <Button type="primary">Button</Button> Ant Design Button with primary color defined in ant-theme-vars.less 
-          </p>
+          <FormOffice />
         </RightWrapper>
-        <FullWrapper>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-          <Button type="primary">Button</Button> Ant Design Button with primary color defined in ant-theme-vars.less 
-          </p>
-
-        </FullWrapper>
+        {/* <FullWrapper>
+          <FormCompany />
+        </FullWrapper> */}
       </Wrapper>
     );
   }
