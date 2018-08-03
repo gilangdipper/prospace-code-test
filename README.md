@@ -1,5 +1,10 @@
-# create-react-app-antd
+# prospace-code-test
 
-Ant Design customization with facebook's Create-React-App CLI based on the following post: https://medium.com/@GeoffMiller/how-to-customize-ant-design-with-react-webpack-the-missing-guide-c6430f2db10f
+## Setup
 
-**Note**: make sure the `less` modules's version is < 3 
+``` bash
+1.) git clone https://github.com/gilangdipper/Foreign-Exchange-Currency-App.git
+2.) yarn install
+3.) yarn start
+
+```

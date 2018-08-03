@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import ListCard from './ListCard';
 import { Wrapper, FullWrapper } from './OverView';
+import { Button } from 'antd';
 
 const CompanyDetailWrapper = styled.div`
+	position:relative;
 	border-bottom: 1px solid #e8e8e8;
 
 	p {
 		font-size: 18px;
 		line-height: 20px;
+	}
+	.ant-btn {
+		position:absolute;
+    right:10px;
+    bottom:10px;
 	}
 `;
 
@@ -38,6 +45,7 @@ const DetailCompany = ({ company }) => {
 				<p>{revenue}</p>
 				<CompanySection>Phone No :</CompanySection>
 				<p>{`(${code}) ${number}`}</p>
+				<Button type="primary" href='/'>Back to Overview</Button> 
 			</CompanyDetailWrapper>
 		: null
 	);

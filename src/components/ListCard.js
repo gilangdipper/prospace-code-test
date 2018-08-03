@@ -59,19 +59,18 @@ class ListCard extends Component {
       )}
     </Fragment>
 
-  
-    renderOfficeCards = (offices, removeOffice) => 
-      <Fragment>
-        <CardTitle>Offices</CardTitle>
-        {offices.map((item, i) =>
-          <Card key={i} title={item.name} extra={this.renderRemoveButton(item.id, removeOffice)}>
-            <SectionTitle>Location :</SectionTitle>
-            <p style={{ marginBottom: 0 }}>Lat - {item.location.lat}</p>
-            <p>Long - {item.location.lng}</p>
-            <SectionTitle>Office Start Date :</SectionTitle>
-            <p>{item.date}</p>
-          </Card>
-        )}
+  renderOfficeCards = (offices, removeOffice) => 
+    <Fragment>
+      <CardTitle>Offices</CardTitle>
+      {offices.map((item, i) =>
+        <Card key={i} title={item.name} extra={this.renderRemoveButton(item.id, removeOffice)}>
+          <SectionTitle>Location :</SectionTitle>
+          <p style={{ marginBottom: 0 }}>Lat - {item.location.lat}</p>
+          <p>Long - {item.location.lng}</p>
+          <SectionTitle>Office Start Date :</SectionTitle>
+          <p>{item.date}</p>
+        </Card>
+      )}
       </Fragment>
 
   renderCard = () => {

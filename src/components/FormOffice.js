@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Form, Button, Input, DatePicker, Select
+  Form, Button, Input, DatePicker, Select, Modal
 } from 'antd';
 import { FormWrapper, FormTitle, InputWrapper } from './FormCompany';
 
@@ -66,6 +66,10 @@ class LocationForm extends React.Component {
 }
 
 class FormOffice extends Component {
+  state= {
+    visible: false
+  };
+
   handleSubmit = (e) => {
     const { form, addOffice } = this.props;
     e.preventDefault();
@@ -77,7 +81,17 @@ class FormOffice extends Component {
         }
         delete officeData['datePicker'];
         addOffice(officeData);
+        this.setState({
+          visible: true,
+        });
       }
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
     });
   }
 
@@ -150,6 +164,13 @@ class FormOffice extends Component {
 						<Button type="primary" htmlType="submit">Create</Button>
 					</FormItem>
 				</Form>
+        <Modal
+          title="Success"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+        >
+          <p>Successed add new Office data</p>
+        </Modal>
 			</FormWrapper>
     );
   }

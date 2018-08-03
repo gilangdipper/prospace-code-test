@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {
-  Form, Button, Input
+  Form, Button, Input, Modal
 } from 'antd';
 
 const FormItem = Form.Item;
@@ -96,14 +96,27 @@ class PhoneNumberForm extends React.Component {
 }
 
 class FormCompany extends Component {
+  state= {
+    visible: false
+  };
+
   handleSubmit = (e) => {
     const { form, addCompany } = this.props;
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         addCompany(values);
+        this.setState({
+          visible: true,
+        });
       }
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
     });
   }
 
@@ -170,6 +183,13 @@ class FormCompany extends Component {
 						<Button type="primary" htmlType="submit">Create</Button>
 					</FormItem>
 				</Form>
+        <Modal
+          title="Success"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+        >
+          <p>Successed add new Company data</p>
+        </Modal>
 			</FormWrapper>
     );
   }
