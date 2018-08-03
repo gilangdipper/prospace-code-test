@@ -62,7 +62,7 @@ class ListCard extends Component {
   
     renderOfficeCards = (offices, removeOffice) => 
       <Fragment>
-        <CardTitle>Companies</CardTitle>
+        <CardTitle>Offices</CardTitle>
         {offices.map((item, i) =>
           <Card key={i} title={item.name} extra={this.renderRemoveButton(item.id, removeOffice)}>
             <SectionTitle>Location :</SectionTitle>

@@ -4,7 +4,7 @@ import FormCompany from './FormCompany';
 import FormOffice from './FormOffice';
 import ListCard from './ListCard';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
@@ -25,7 +25,7 @@ const RightWrapper = styled.div`
   margin: 20px 0;
 `;
 
-const FullWrapper = styled.div`
+export const FullWrapper = styled.div`
   flex: 100%;
   border-top: 1px solid #e8e8e8;
   margin: 0 10px;
