@@ -3,6 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 import FormCompany from './FormCompany';
 import FormOffice from './FormOffice';
+import ListCard from './ListCard';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,7 +26,7 @@ const FullWrapper = styled.div`
   flex: 100%;
 `;
 
-class overView extends Component {
+class OverView extends Component {
 
   render() {
     return (
@@ -36,12 +37,12 @@ class overView extends Component {
         <RightWrapper>
           <FormOffice />
         </RightWrapper>
-        {/* <FullWrapper>
-          <FormCompany />
-        </FullWrapper> */}
+        <FullWrapper>
+          <ListCard />
+        </FullWrapper>
       </Wrapper>
     );
   }
 }
 
-export default overView;
+export default OverView;
