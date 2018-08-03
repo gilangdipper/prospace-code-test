@@ -60,10 +60,7 @@ class PhoneNumberForm extends React.Component {
   }
 
   handleNumberChange = (e) => {
-    const value = parseInt(e.target.value || 0, 10);
-    if (isNaN(value)) {
-      return;
-    }
+    const value = e.target.value;
     if (!('value' in this.props)) {
       this.setState({ [e.target.name]: value });
     }
@@ -71,7 +68,6 @@ class PhoneNumberForm extends React.Component {
   }
 
   triggerChange = (changedValue) => {
-    // Should provide an event to pass value to Form.
     const onChange = this.props.onChange;
     if (onChange) {
       onChange(Object.assign({}, this.state, changedValue));
@@ -103,21 +99,15 @@ class PhoneNumberForm extends React.Component {
 
 class FormCompany extends Component {
   handleSubmit = (e) => {
+    const { form, addCompany } = this.props;
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        addCompany(values);
       }
     });
   }
-
-  checkPrice = (rule, value, callback) => {
-    if (value.number > 0) {
-      callback();
-      return;
-    }
-    callback('Price must greater than zero!');
-  };
 
   render() {
 		const { getFieldDecorator } = this.props.form;
@@ -156,17 +146,18 @@ class FormCompany extends Component {
 						{getFieldDecorator('revenue', {
 							rules: [{
 								required: true,
-								message: 'Please input Company"s revenue',
+                message: 'Please input Company"s revenue',
+                rules: [{ type: 'number'}],
 							}],
 						})(
-							<Input placeholder="revenue" />
+							<Input placeholder="revenue" type="number"/>
 						)}
 					</FormItem> 
 
 					<FormItem {...formItemLayout} label="Phone No::">
 						{getFieldDecorator('phoneNumber', {
 							rules: [{
-								initialValue: { code: 0, number: 0 },
+								initialValue: { code: '', number: '' },
 								rules: [{ validator: this.checkPrice }],
 								type: 'object',
 								required: true,

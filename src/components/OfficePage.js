@@ -32,24 +32,30 @@ const FullWrapper = styled.div`
   margin: 0 10px;
 `;
 
-class OverView extends Component {
+const DetailCompany = ({ company }) => {
+
+
+	return null;
+}
+
+class OfficePage extends Component {
+
+	componentDidMount() {
+		const { match, getCompany } = this.props;
+		getCompany(match.params.id);
+	}
 
   render() {
-    const { addCompany, companies, removeCompany } = this.props;
+		const { addCompany, company } = this.props;
     return (
       <Wrapper>
-        <LeftWrapper>
-          <FormCompany addCompany={addCompany}/>
-        </LeftWrapper>
-        <RightWrapper>
-          <FormOffice />
-        </RightWrapper>
         <FullWrapper>
-          <ListCard companies={companies} removeCompany={removeCompany}/>
+					<DetailCompany company={company} />
+          {/* <ListCard companies={companies} removeCompany={removeCompany}/> */}
         </FullWrapper>
       </Wrapper>
     );
   }
 }
 
-export default OverView;
+export default OfficePage;

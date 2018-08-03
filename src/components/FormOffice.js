@@ -57,6 +57,7 @@ class LocationForm extends React.Component {
           value={state.lat}
           name="lat"
           onChange={this.handleNumberChange}
+          style={{flex: '50%'}}
         />
         <Input 
           placeholder="longitude"  
@@ -64,6 +65,7 @@ class LocationForm extends React.Component {
           value={state.lng}
           name="lng"
           onChange={this.handleNumberChange}
+          style={{flex: '50%'}}
         />
       </InputWrapper>
     );
@@ -76,6 +78,7 @@ class FormOffice extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        console.log('///', values.datePicker.format("MM/DD/YYYY"));
       }
     });
   }
@@ -129,7 +132,7 @@ class FormOffice extends Component {
 						{...formItemLayout}
 						label="Office Start Date::"
 					>
-						{getFieldDecorator('date-picker', config)(
+						{getFieldDecorator('datePicker', config)(
 							<DatePicker />
 						)}
 					</FormItem>
