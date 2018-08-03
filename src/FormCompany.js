@@ -7,18 +7,18 @@ import {
 
 const FormItem = Form.Item;
 
-const InputWrapper = styled.span`
+export const InputWrapper = styled.span`
   display: flex;
 
   .ant-input {
     &:first-child {
       flex: 30%;
       margin-right: 5px;
-    }
+		}
   }
 `;
 
-const FormWrapper = styled.div`
+export const FormWrapper = styled.div`
 	.ant-form-item {
 		.ant-form-item-label {
 			text-align: left;
@@ -28,7 +28,16 @@ const FormWrapper = styled.div`
 		.ant-btn {
 			width: 100%;
 		}
+
+		&:last-child {
+			margin-bottom: 10px;
+		}
 	}
+`;
+
+export const FormTitle = styled.p`
+	font-size: 26px;
+	margin-bottom: 12px;
 `;
 
 class PhoneNumberForm extends React.Component {
@@ -119,6 +128,7 @@ class FormCompany extends Component {
 		
     return (
 			<FormWrapper>
+				<FormTitle>Create Company</FormTitle>
 				<Form onSubmit={this.handleSubmit}>
 					<FormItem {...formItemLayout} label="Name::">
 						{getFieldDecorator('name', {

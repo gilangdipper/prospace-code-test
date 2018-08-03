@@ -15,15 +15,21 @@ const Wrapper = styled.div`
 
 const LeftWrapper = styled.div`
   flex: 50%;
-  padding-right: 10px;
+  padding: 0 10px;
+  border-right: 1px solid #e8e8e8;
+  margin: 20px 0;
 `;
 
 const RightWrapper = styled.div`
   flex: 50%;
+  padding: 0 10px;
+  margin: 20px 0;
 `;
 
 const FullWrapper = styled.div`
   flex: 100%;
+  border-top: 1px solid #e8e8e8;
+  margin: 0 10px;
 `;
 
 class OverView extends Component {

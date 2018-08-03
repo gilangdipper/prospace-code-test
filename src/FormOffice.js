@@ -1,40 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import {
   Form, Button, Input, DatePicker, Select
 } from 'antd';
+import { FormWrapper, FormTitle, InputWrapper } from './FormCompany';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
-
-const InputWrapper = styled.span`
-  display: flex;
-
-  .ant-input {
-    &:first-child {
-      flex: 50%;
-      margin-right: 5px;
-		}
-		
-		&:last-child {
-			flex: 50%;
-		}
-  }
-`;
-
-const FormWrapper = styled.div`
-	.ant-form-item {
-		.ant-form-item-label {
-			text-align: left;
-			padding: 0;
-		}
-
-		.ant-btn {
-			width: 100%;
-		}
-	}
-`;
 
 class LocationForm extends React.Component {
   constructor(props) {
@@ -127,6 +100,7 @@ class FormOffice extends Component {
 		
     return (
 			<FormWrapper>
+				<FormTitle>Create Office</FormTitle>
 				<Form onSubmit={this.handleSubmit}>
 					<FormItem {...formItemLayout} label="Name::">
 						{getFieldDecorator('name', {
