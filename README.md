@@ -3,7 +3,7 @@
 ## Setup
 
 ``` bash
-1.) git clone https://github.com/gilangdipper/Foreign-Exchange-Currency-App.git
+1.) git clone https://github.com/gilangdipper/prospace-code-test.git
 2.) yarn install
 3.) yarn start
 
