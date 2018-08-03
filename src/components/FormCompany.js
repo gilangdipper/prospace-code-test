@@ -51,7 +51,6 @@ class PhoneNumberForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Should be a controlled component.
     if ('value' in nextProps) {
       const value = nextProps.value;
       this.setState(value);
@@ -164,7 +163,6 @@ class FormCompany extends Component {
 							}],
 						})(<PhoneNumberForm />)}
 					</FormItem>
-
 
 					<FormItem
 						wrapperCol={{ span: 24 }}

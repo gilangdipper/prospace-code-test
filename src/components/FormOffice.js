@@ -20,7 +20,6 @@ class LocationForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Should be a controlled component.
     if ('value' in nextProps) {
       const value = nextProps.value;
       this.setState(value);
@@ -28,10 +27,7 @@ class LocationForm extends React.Component {
   }
 
   handleNumberChange = (e) => {
-    const value = parseInt(e.target.value || 0, 10);
-    if (isNaN(value)) {
-      return;
-    }
+    const value = e.target.value;
     if (!('value' in this.props)) {
       this.setState({ [e.target.name]: value });
     }
@@ -39,7 +35,6 @@ class LocationForm extends React.Component {
   }
 
   triggerChange = (changedValue) => {
-    // Should provide an event to pass value to Form.
     const onChange = this.props.onChange;
     if (onChange) {
       onChange(Object.assign({}, this.state, changedValue));
@@ -73,25 +68,22 @@ class LocationForm extends React.Component {
 
 class FormOffice extends Component {
   handleSubmit = (e) => {
+    const { form, addOffice } = this.props;
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        console.log('///', values.datePicker.format("MM/DD/YYYY"));
+        let officeData = {
+          ...values,
+          date: values.datePicker.format("MM/DD/YYYY")
+        }
+        delete officeData['datePicker'];
+        addOffice(officeData);
       }
     });
   }
 
-  checkPrice = (rule, value, callback) => {
-    if (value.number > 0) {
-      callback();
-      return;
-    }
-    callback('Price must greater than zero!');
-  };
-
   render() {
-		const { getFieldDecorator } = this.props.form;
+		const { companies, form: { getFieldDecorator } } = this.props;
     const formItemLayout = {
       labelCol: { span: 24 },
       wrapperCol: { span: 24 },
@@ -119,7 +111,6 @@ class FormOffice extends Component {
 						{getFieldDecorator('location', {
 							rules: [{
 								initialValue: { lat: 0, lng: 0 },
-								rules: [{ validator: this.checkPrice }],
 								type: 'object',
 								required: true,
 								message: 'Please input Office"s location',
@@ -141,18 +132,18 @@ class FormOffice extends Component {
 						label="Company::"
 						hasFeedback
 					>
-						{getFieldDecorator('select', {
+						{getFieldDecorator('company', {
 							rules: [
 								{ required: true, message: 'Please select Company!' },
 							],
 						})(
 							<Select placeholder="select company">
-								<Option value="china">China</Option>
-								<Option value="use">U.S.A</Option>
+                {companies.map((item, i) =>
+                  <Option key={i} value={item.id}>{item.name}</Option>
+                )}
 							</Select>
 						)}
 					</FormItem>
-
 
 					<FormItem
 						wrapperCol={{ span: 24 }}

@@ -34,14 +34,14 @@ const FullWrapper = styled.div`
 class OverView extends Component {
 
   render() {
-    const { addCompany, companies, removeCompany } = this.props;
+    const { addCompany, companies, removeCompany, addOffice } = this.props;
     return (
       <Wrapper>
         <LeftWrapper>
           <FormCompany addCompany={addCompany}/>
         </LeftWrapper>
         <RightWrapper>
-          <FormOffice />
+          <FormOffice addOffice={addOffice} companies={companies}/>
         </RightWrapper>
         <FullWrapper>
           <ListCard companies={companies} removeCompany={removeCompany}/>
