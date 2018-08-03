@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
 import styled from 'styled-components';
 import { Card, Icon } from 'antd';
 
