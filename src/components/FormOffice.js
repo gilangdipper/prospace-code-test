@@ -81,19 +81,14 @@ class FormOffice extends Component {
         }
         delete officeData['datePicker'];
         addOffice(officeData);
-        this.setState({
-          visible: true,
+        
+        Modal.success({
+          title: 'Successed',
+          content: 'Successed adding new Office data',
         });
       }
     });
-  }
-
-  handleOk = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  }
+  };
 
   render() {
 		const { companies, form: { getFieldDecorator } } = this.props;
@@ -164,16 +159,9 @@ class FormOffice extends Component {
 						<Button type="primary" htmlType="submit">Create</Button>
 					</FormItem>
 				</Form>
-        <Modal
-          title="Success"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-        >
-          <p>Successed add new Office data</p>
-        </Modal>
 			</FormWrapper>
     );
-  }
-}
+  };
+};
 
 export default Form.create()(FormOffice);

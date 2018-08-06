@@ -106,19 +106,14 @@ class FormCompany extends Component {
     form.validateFields((err, values) => {
       if (!err) {
         addCompany(values);
-        this.setState({
-          visible: true,
+        
+        Modal.success({
+          title: 'Successed',
+          content: 'Successed adding new Company data',
         });
       }
     });
-  }
-
-  handleOk = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  }
+  };
 
   render() {
 		const { getFieldDecorator } = this.props.form;
@@ -183,16 +178,9 @@ class FormCompany extends Component {
 						<Button type="primary" htmlType="submit">Create</Button>
 					</FormItem>
 				</Form>
-        <Modal
-          title="Success"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-        >
-          <p>Successed add new Company data</p>
-        </Modal>
 			</FormWrapper>
     );
-  }
-}
+  };
+};
 
 export default Form.create()(FormCompany);
