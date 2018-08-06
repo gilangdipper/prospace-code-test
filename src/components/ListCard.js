@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Card, Icon } from 'antd';
+import _ from 'lodash';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -71,14 +72,14 @@ class ListCard extends Component {
           <p>{item.date}</p>
         </Card>
       )}
-      </Fragment>
+    </Fragment>
 
   renderCard = () => {
     const { companies, offices, removeCompany, removeOffice } = this.props;
-
-    if (companies) {
+    
+    if (!_.isEmpty(companies)) {
       return this.renderCompanyCards(companies, removeCompany);
-    } else if (offices) {
+    } else if (!_.isEmpty(offices)) {
       return this.renderOfficeCards(offices, removeOffice);
     } else return null;
   };

@@ -54,10 +54,9 @@ const DetailCompany = ({ company }) => {
 class OfficePage extends Component {
 
 	componentWillMount() {
-		const { match, getCompany, getOffices } = this.props;
+		const { match, getCompany } = this.props;
 		const idCompany = match.params.id
 		getCompany(idCompany);
-		getOffices(idCompany);
 	}
 
   render() {

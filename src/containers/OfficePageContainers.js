@@ -2,19 +2,17 @@ import { connect } from 'react-redux';
 import OfficePage from '../components/OfficePage';
 import { 
   removeOffice,
-  getCompany,
-  getOffices
+  getCompany
 } from '../actions';
 
 const mapDispatchToProps = {
   removeOffice,
-  getCompany,
-  getOffices
+  getCompany
 };
 
 const mapStateToProps = (state) => ({
   company: state.companies.filter(item => item.id === state.filterCompany),
-  offices: state.offices
+  offices: state.offices.filter(item => item.company === state.filterCompany)
 });
 
 const OfficePageContainers = connect(
