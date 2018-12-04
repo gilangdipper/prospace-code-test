@@ -94,7 +94,7 @@ class ListCard extends Component {
             </Card>
           )}
         </Fragment>
-      : <DefaultMessage>Theres's no Company data!</DefaultMessage>);
+      : <DefaultMessage>Theres"s no Company data!</DefaultMessage>);
 
   renderOfficeCards = (offices, removeOffice) => 
     (!_.isEmpty(offices)
